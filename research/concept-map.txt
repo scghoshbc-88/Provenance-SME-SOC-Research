@@ -1,0 +1,83 @@
+Application of Provenance-Based Intrusion Detection in SME Environments Using Real-Time SOC Telemetry
+
+Shyamal Ghosh
+BTech Cybersecurity and Digital Forensics, BCIT
+Research concept for undergraduate research project, September 2026
+
+1. Research problem
+
+Small and medium-sized enterprises often have limited internal security monitoring resources. Conventional SIEM, endpoint and managed security services produce useful alerts, but analysts still need to determine how individual events belong to the same incident and what caused the sequence of activity.
+
+Provenance-based methods represent relationships among processes, files and other system objects. The research gap is the limited controlled evidence of how much causal information can be recovered from ordinary SOC telemetry, such as Wazuh, Sysmon and Falco, in an SME-oriented environment with normal background activity and incomplete event collection.
+
+The project does not claim to invent provenance-based intrusion detection or that Wazuh and Falco are provenance-based intrusion detection systems.
+
+2. Research question
+
+To what extent can provenance-based intrusion detection identify and explain multi-stage cyberattacks in SME environments when supplied with real-time SOC telemetry inside a controlled enterprise cyber range, and how does its detection and forensic reconstruction compare with conventional SIEM and runtime-security correlation against the same ground-truth attacks?
+
+RQ1. Detection and reconstruction: Does provenance-based analysis identify and reconstruct more of the known attack chain than conventional Wazuh and Falco event correlation?
+
+RQ2. Operational realism: How does normal SME user and administrative activity affect accuracy, false positives and attribution?
+
+RQ3. Telemetry completeness: How does missing event data affect detection and attack-path reconstruction across the three analysis configurations?
+
+RQ5. Analyst usefulness: Does provenance-assisted reconstruction reduce false-positive alerts, evidence reviewed and time needed to determine the sequence and root cause?
+
+RQ4. Telemetry volume and ingestion latency are reserved for Phase 2. AI-orchestrated attacks, adversarial mimicry, DDoS and insider threats are context rather than Phase 1 test scenarios.
+
+3. Experimental environment and scenarios
+
+The proposed isolated cyber range contains a Kali Linux attacker VM, a Windows endpoint VM with Sysmon and a Wazuh agent, a Linux endpoint with a Wazuh agent and Falco, a Wazuh manager and indexer, Grafana and Loki for visualization, a lightweight provenance collection and tag-propagation analysis component, and a mechanism for controlled telemetry loss. Active Directory is deferred to Phase 2.
+
+The planned Phase 1 study uses two lab machines and a control workstation, separated from production infrastructure. The four proposed multi-stage scenarios are:
+
+1. Persistence: phishing-delivered payload and a scheduled-task backdoor.
+
+2. Credential compromise: LSASS credential access followed by reuse of local administrator access on a second host.
+
+3. Lateral movement: SMB or WinRM access to a second host using reused credentials.
+
+4. Privilege escalation and data access: misconfigured service, sensitive-file staging and HTTPS exfiltration.
+
+Each scenario is intended to have a manually verified ground-truth timeline recording processes, files, network connections, hosts, credentials, timestamps and MITRE ATT&CK techniques. These are planned comparative scenarios, not completed experimental results.
+
+4. Experimental conditions
+
+Normal SME activity will continue during each run, including authentication, file and application use, shell or PowerShell administration, scheduled processes and normal network traffic.
+
+Telemetry completeness will be varied across three conditions: a complete baseline with low latency, approximately 10 percent of events dropped, and approximately 25 percent of events dropped. Delayed ingestion and high-volume noise are reserved for Phase 2.
+
+Configuration A uses conventional Wazuh and Sysmon event-based and rule-based SIEM detection.
+
+Configuration B combines SIEM telemetry with Falco runtime-security events correlated by time and shared identifiers.
+
+Configuration C uses a provenance-assisted graph of process, file and network relationships, with locally reused credential context and lightweight tag propagation.
+
+The proposed design crosses the three configurations with the three telemetry conditions, giving nine comparison conditions. The same four ground-truth scenarios and benign background should be used for each condition.
+
+The protocol must distinguish improvements due to additional sensor coverage from improvements due to provenance analysis itself.
+
+5. Data and evaluation measures
+
+The planned dataset includes attack timestamps, process and parent-process relationships, file operations, network connections, local authentication and credential reuse, Sysmon events, Wazuh alerts, Falco events, provenance graph nodes and edges, MITRE ATT&CK mappings, benign and malicious labels, applied telemetry-loss conditions, and analyst reconstruction results.
+
+The main proposed measures are the proportion of ground-truth stages detected, precision and recall, false-positive and false-negative rates, detection latency, proportion of the causal chain reconstructed, attack-path reconstruction accuracy, ATT&CK coverage, number of events or graph nodes requiring analyst review, analyst reconstruction time, and change in these measures under event loss.
+
+System overhead and the volume of provenance data are secondary measures where feasible.
+
+6. Expected contribution and scope
+
+The project aims to establish whether provenance adds useful causal information beyond conventional SIEM and runtime-event correlation, whether the benefit persists amid realistic benign activity, and how reconstruction and analyst effort change as telemetry becomes incomplete.
+
+It also aims to identify which causal relationships can be supported by a Wazuh, Sysmon and Falco stack and which require more specialized provenance collection.
+
+Phase 2 possibilities include Active Directory identity relationships, delayed ingestion and high-volume telemetry, four additional scenarios including Kerberos lateral movement, and a graph-neural-network-based PIDS comparison.
+
+The intended contribution is a practical assessment of provenance as a causal enrichment layer for SME and managed SOC investigation, connecting digital forensics, operational monitoring and provenance-based intrusion detection research.
+
+7. Current project status
+
+The thematic literature review and research proposal are being finalized. Independent home-lab feasibility experiments have already examined Wazuh authentication telemetry, Falco runtime events and ingestion, Linux Audit evidence, and a controlled process-creation and file-access chain.
+
+These preliminary experiments support the feasibility of selected event collection and reconstruction steps. They do not yet establish comparative detection performance, analyst benefit, robustness to telemetry loss or a complete automated provenance-based intrusion detection system.
