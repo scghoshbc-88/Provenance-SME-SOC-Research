@@ -38,6 +38,15 @@ chain, not complete data-flow provenance or intrusion detection.
 
 ## Reproducibility
 
+To reproduce the **controlled process chain only**, from this experiment directory run:
+
+```bash
+python3 scripts/process_chain.py
+```
+
+This creates `evidence/controlled-data.txt` locally. It does not reproduce the original audit event serial numbers, capture audit evidence, or validate the published graph without separately configuring Linux Audit. See [methodology](methodology.md) for the instrumentation used in the original run.
+
+
 The published Python script is a portable adaptation of the script
 used during the original experiment.
 
