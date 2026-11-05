@@ -2,13 +2,13 @@
 
 **Working project title:** Provenance-Based Intrusion Detection in SME Environments Using Real-Time SOC Telemetry
 
-This work is part of my ongoing undergraduate BTech Cybersecurity and Digital Forensics project at BCIT. The literature review and proposal are not final.
+This work is part of my ongoing undergraduate BTech Cybersecurity and Digital Forensics project at BCIT. 
 
 ## Question
 
 To what extent can provenance-assisted reconstruction help identify and explain multi-stage attacks using telemetry available to a resource-constrained SME, compared with conventional SIEM and runtime-event correlation?
 
-The emphasis is on **investigative value**: which relationships are supported by evidence, which are only temporal associations, and how an analyst's reconstruction changes when events are missing.
+The emphasis is on "investigative value", i.e., which relationships are supported by evidence, which are only temporal associations, and how an analyst's reconstruction changes when events are missing.
 
 ## Literature review in progress
 
@@ -34,12 +34,4 @@ The [experiment notebook](../README.md#experiments-so-far) records Wazuh event c
 
 That establishes a limited reconstruction example. It does not show detection improvement, a completed attack reconstruction benchmark, or an automated PIDS.
 
-## Next decisions
 
-1. Complete the literature synthesis and narrow the final research question.
-2. Specify comparable baselines and a repeatable ground-truth protocol.
-3. Test one controlled multi-stage scenario before expanding the scenario set.
-4. Introduce telemetry loss and measure reconstruction changes.
-5. Record what cannot be inferred from the available sensors.
-
-I would particularly welcome feedback on the comparison design and on whether the resulting evidence could support a small, reproducible study.
