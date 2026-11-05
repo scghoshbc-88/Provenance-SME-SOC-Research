@@ -44,4 +44,4 @@ The important methodological problem is to separate any benefit from **better an
 
 This is an independent home lab, not a record of a company deployment. I publish selected methods, scripts and diagrams; raw audit exports and screenshots containing local identifiers are not included. Some older experiment notes refer to evidence retained privately, so not every local screenshot is available here.
 
-The next steps are to finalize the literature review and proposal, run controlled multi-stage scenarios, define ground truth, and measure reconstruction quality and telemetry-loss effects. I welcome technical criticism of the experimental design.
+I welcome technical criticism of the experimental design. Cheers!
