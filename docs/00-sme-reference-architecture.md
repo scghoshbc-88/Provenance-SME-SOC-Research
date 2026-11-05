@@ -134,4 +134,4 @@ No performance or accuracy claims are made before experiments are conducted.
 
 ## 8. Scope statement for readers
 
-This document is a **proposed SME SOC reference architecture**. The separate [implemented home lab architecture](01-network-architecture.md) is the authoritative record of what has actually been deployed and verified. The enterprise-oriented materials elsewhere in the repository are historical engineering documentation and should not be interpreted as evidence of current independent-lab integrations.
+This document is a **proposed SME SOC reference architecture**. The separate [implemented home lab architecture](01-network-architecture.md) is the authoritative record of what has actually been deployed and verified. The proposed integrations shown here are not evidence of deployment in the independent lab.
