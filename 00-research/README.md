@@ -12,6 +12,8 @@ The emphasis is on "investigative value", i.e., which relationships are supporte
 
 ## Literature review in progress
 
+[Selected related-work notes](related-work.md) record the papers I am using to sharpen the experimental comparison. They are a working reading guide, not a complete literature review.
+
 My thematic review currently contains 113 references across five themes and twelve sub-themes. The areas include provenance foundations and attack reconstruction; detection and scalability; SOC telemetry and analyst workload; SME operational constraints; and emerging threats. I am checking the strongest claims against the original papers before finalizing the review. The full review is not published here.
 
 ## Proposed comparison
