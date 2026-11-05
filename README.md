@@ -1,77 +1,47 @@
-# Independent Research Home Lab — Provenance and SME Incident Investigation
+# Provenance-assisted incident investigation in SME environments
 
-**Research focus:** Investigating the practical value and limitations of provenance-supported intrusion investigation in resource-constrained small and medium-sized enterprise (SME) security operations.
+This is the laboratory notebook for my ongoing BTech Cybersecurity and Digital Forensics project at the British Columbia Institute of Technology (BCIT).
 
-**Status (5 November 2026):** Linux-based feasibility experiments documented through Experiment 04. Windows, Microsoft 365, cross-platform orchestration, AI-assisted scenarios, and comparative evaluations are **proposed future work**, not implemented results.
+I am investigating a practical question: **can relationships between processes, files and security events help an analyst reconstruct an incident more reliably than a conventional SIEM timeline?** I am particularly interested in what remains possible when an organization has limited monitoring resources or some telemetry is missing.
 
-> This is an independent research prototype, not a completed provenance-based intrusion detection system (PIDS), and not evidence of a new detection algorithm.
+The literature review and project proposal are still being revised. The experiments below are feasibility work, not a completed provenance-based intrusion detection system.
 
-**Research design and thematic review:** [Research context](research/README.md) | **Actual lab map:** [Architecture](docs/02-home-lab-architecture-map.md) | **Proposed SME environment:** [Reference architecture](docs/00-sme-reference-architecture.md).
+## Laboratory setup
 
-## Research motivation
+I use two Ubuntu machines and a Wazuh virtual machine. One Ubuntu host runs KVM/libvirt and hosts the Wazuh manager, indexer and dashboard (version 4.14.9). The second host is used for controlled Linux experiments with a Wazuh agent, Falco and Linux Audit.
 
-Security operations teams commonly work with fragmented endpoint, identity, and SIEM alerts. This project asks whether collecting and connecting system-level evidence can improve **what an analyst can reconstruct**, while respecting limited SME infrastructure, staffing, and telemetry budgets.
+[Current lab architecture](docs/02-home-lab-architecture-map.md) · [Network setup](docs/01-network-architecture.md)
 
-The distinction between a **verified system relationship**, a **temporal or identity-based correlation**, and a **hypothesized causal link** is central to the research. In particular, an observed file-open system call does not by itself prove that bytes were transferred or that an end-to-end information flow occurred.
+## Experiments so far
 
-## Current independent lab
-
-- **Ubuntu KVM host:** physical Linux system running a Wazuh agent and hosting the Wazuh VM.
-- **Wazuh VM:** Ubuntu Server guest with Wazuh 4.14.9 manager, indexer, and dashboard on a private virtual network.
-- **Second Ubuntu host:** Wazuh agent, Falco, and Linux Audit used for controlled experiments.
-- **Data handling:** experiment artifacts are sanitized before publication; private audit exports, network details, credentials, and employer-specific data are excluded.
-
-This independent repository contains only the undergraduate research project. The earlier engineering-oriented SIEM/SOC repository is separate and does not establish deployment of enterprise integrations here.
-
-## Verified experiments
-
-| Experiment | Demonstrated | What it does not demonstrate |
+| Experiment | Question tested | Record |
 | --- | --- | --- |
-| [01 — Controlled authentication telemetry](experiments/01-controlled-authentication/README.md) | Controlled Wazuh authentication event collection | Provenance-based detection |
-| [02A — Falco runtime detection](experiments/02-falco-runtime/README.md) | Falco detection of a controlled host event | Attack reconstruction |
-| [02B — Falco to Wazuh ingestion](experiments/02b-falco-wazuh-ingestion/README.md) | Falco JSON ingestion and a Wazuh custom alert | A complete causal graph |
-| [03 — Linux Audit partial provenance](experiments/03-linux-audit-provenance/README.md) | Audit-supported process and file-access relationships | Full data-flow causality or intrusion detection accuracy |
-| [04 — Process-creation and file-access reconstruction](experiments/04-process-file-provenance/README.md) | Controlled clone3/execve chain and write-mode file-open evidence | Automated PIDS or detection superiority |
+| [01 — Authentication](experiments/01-controlled-authentication/README.md) | Can I generate a controlled authentication event and find it in Wazuh? | Controlled event collection |
+| [02 — Falco](experiments/02-falco-runtime/README.md) | Does Falco observe the selected runtime activity? | Runtime alert |
+| [02B — Falco/Wazuh](experiments/02b-falco-wazuh-ingestion/README.md) | Can the Falco event be ingested and alerted on by Wazuh? | Integration test |
+| [03 — Linux Audit](experiments/03-linux-audit-provenance/README.md) | What process and file relationships can I reconstruct from selected audit records? | Partial reconstruction |
+| [04 — Process chain](experiments/04-process-file-provenance/README.md) | Can I capture process creation as well as execution and file access? | Parent–child–grandchild chain |
 
-**For the most recent evidence, see [Experiment 04](experiments/04-process-file-provenance/results.md).**
+### Most recent experiment: 04 (4 November 2026)
 
-**For the earlier sanitized figures, see [Experiment 03F: sanitized publication package](experiments/03-linux-audit-provenance/publication/README.md)** for the event interpretation, parser, graph generator, DOT source, SVG figure, reproduction procedure, and limitations.
+A controlled Python parent created a child, which created a grandchild. The grandchild opened a test file in write mode. Six selected audit events (serials 1406, 1408, 1409, 1414, 1415 and 1419) support the reconstruction.
 
-![Experiment 03F: sanitized process and file-open relationships](experiments/03-linux-audit-provenance/publication/figures/provenance-03f-public.svg)
+![Experiment 04 process and file-access graph](experiments/04-process-file-provenance/figures/provenance-04b.svg)
 
-The four recorded audit events support two Python executions (including a PPID association), a source-file read-only open, and a destination-file write-only open. They do not include a directly observed fork/clone event or prove data flow between the files.
+The `clone3` records make this stronger than my earlier Experiment 03F, where the process relationship relied on parent-process identifiers without a captured process-creation event. The `openat` event shows a successful file open with write flags; it does not, by itself, establish a completed write or byte-level information flow.
 
-## Research questions
+[Experiment 04 results](experiments/04-process-file-provenance/results.md) · [Method](experiments/04-process-file-provenance/methodology.md) · [Test script](experiments/04-process-file-provenance/scripts/process_chain.py)
 
-1. Which incident relationships can be established from ordinary SME-accessible telemetry, and which require richer provenance collection?
-2. Does provenance-supported reconstruction provide useful additional context compared with SIEM alerts and timelines alone?
-3. How do telemetry loss, process-identity ambiguity, collection overhead, and analyst effort affect the practical value of reconstruction?
-4. Which conclusions remain defensible when linking operating-system evidence to Windows and cloud-identity logs?
+## What I am working toward
 
-## Proposed cross-platform roadmap — not yet completed
+My proposed study compares three approaches to investigating the same controlled attack scenarios: (A) conventional SIEM analysis, (B) SIEM with runtime-event correlation, and (C) provenance-assisted reconstruction. I plan to repeat comparisons with complete telemetry and controlled loss of approximately 10% and 25% of events.
 
-**Phase A — Stronger Linux provenance.** Extend controlled collection to process creation, execution, file and selected network operations; validate event links and missing evidence.
+The important methodological problem is to separate any benefit from **better analysis** from a benefit that comes simply from **collecting more events**. I have not yet run that comparison.
 
-**Phase B — Windows endpoint provenance.** Introduce an isolated Windows test VM with Sysmon, Windows Security logs, and a Wazuh agent. Evaluate process ancestry, persistence, file creation, and network connections. Sysmon alone is not a complete file-read provenance sensor.
+[Research question and proposed study design](research/README.md) · [Illustrative SME environment](docs/00-sme-reference-architecture.md)
 
-**Phase C — Microsoft 365 and identity context.** Use a dedicated test tenant or synthetic data for Entra ID, Defender, and Microsoft 365 audit events. Distinguish identity/event correlation from proven operating-system causality.
+## Scope of the published material
 
-**Phase D — Controlled multi-stage and cross-platform scenarios.** Run repeatable, authorized scenarios in an isolated environment, recording ground truth and MITRE ATT&CK mappings. Explore controlled **AI-assisted attack variations** as a future experimental factor, without assuming that such scenarios have been implemented or that AI automatically makes attacks more effective.
+This is an independent home lab, not a record of a company deployment. I publish selected methods, scripts and diagrams; raw audit exports and screenshots containing local identifiers are not included. Some older experiment notes refer to evidence retained privately, so not every local screenshot is available here.
 
-**Phase E — Comparative evaluation.** Compare SIEM-only investigation, enriched runtime telemetry, and provenance-supported reconstruction using reconstruction completeness, detection measures where ground truth permits, analyst effort, telemetry-loss robustness, and resource overhead.
-
-The roadmap is a research plan, not a statement of completed functionality or a fixed doctoral proposal.
-
-**Evidence image status:** Previously published dashboard screenshots are intentionally withheld from this new repository pending manual privacy review. Some older experiment documents may refer to those withheld screenshots; the textual methods and available DOT/SVG figures remain accessible.
-
-## Reproducibility and responsible publication
-
-- Publish scripts, configurations, methods, and sanitized visualizations only after review.
-- Keep raw audit logs and other identifying evidence private.
-- Separate **observed**, **inferred**, and **planned** results.
-- Record event identifiers, sensor configuration, versions, ground truth, and limitations.
-- Avoid claims of PIDS accuracy, zero-day detection, cross-platform causal reconstruction, or AI-attack resilience without direct experimental evidence.
-
-## Research context
-
-This prototype supports an ongoing BCIT cybersecurity research project and an exploration of future research questions in system provenance, intrusion detection, and observability. It is intended as a **feasibility study and research conversation starter**, not a finished paper or a production security product.
+The next steps are to finalize the literature review and proposal, run controlled multi-stage scenarios, define ground truth, and measure reconstruction quality and telemetry-loss effects. I welcome technical criticism of the experimental design.
