@@ -44,6 +44,14 @@ The important methodological problem is to separate any benefit from **better an
 
 [Original research concept (plain text)](00-research/concept-map.txt) · [Research question and proposed study design](00-research/README.md) · [Illustrative SME environment](02-docs/00-sme-reference-architecture.md)
 
+## Repository history and documentation
+
+This independent repository was created on 5 November 2026 by transferring selected, sanitized material from an earlier SIEM/SOC lab repository. Several commits made that day record the transfer and subsequent documentation edits, not the dates on which the experiments were performed. Experiment records identify their own execution dates; for example, Experiment 04 was run on 4 November 2026.
+
+The earlier lab repository is not linked here because it covers a separate engineering project. Original raw evidence is retained outside this public repository. The published figures and selected event identifiers are not a substitute for the complete audit exports, and checksums for those exports have not been published here.
+
+Documentation in this repository has been drafted and edited with AI assistance. The experiments and data collection are my work; I am responsible for checking the technical interpretations, research claims and conclusions.
+
 ## Scope of the published material
 
 This is an independent home lab, not a record of a company deployment. I publish selected methods, scripts and diagrams; raw audit exports and screenshots containing local identifiers are not included. Some older experiment notes refer to evidence retained privately, so not every local screenshot is available here.
