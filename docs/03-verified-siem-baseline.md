@@ -62,44 +62,12 @@ Dashboard verification: **Endpoints** for agent status; **Threat Hunting → Eve
 4. No restart/reboot persistence, telemetry-loss experiment, resource benchmark, or analyst timing measurement was performed.
 5. A displayed USB attachment alert is evidence of an indexed alert, not independent confirmation of the physical device action.
 
-## Next validation
+## Subsequent work
 
-Run a **safe, timestamped, reproducible authentication-event test** on Machine B; record ground truth and matching manager/indexed alerts; then specify a baseline event-reconstruction protocol before introducing Falco or provenance instrumentation.
+The controlled authentication and Falco experiments were subsequently documented in [Experiment 01](../experiments/01-controlled-authentication/README.md) and [Experiment 02](../experiments/02-falco-runtime/README.md). This section remains the dated October 31 baseline rather than a description of the latest lab state.
 
 See [network architecture](01-network-architecture.md) and [SME reference architecture](00-sme-reference-architecture.md).
 
+## Screenshot evidence
 
-## Screenshot evidence (published October 31, 2026)
-
-Four sanitized PNG screenshots from the October 31 validation session were uploaded to this research branch in commit `4a9f628`.
-
-| Intended repository path | Demonstrates | Important limitation |
-|---|---|---|
-| `evidence/01-wazuh-agents-active.png` | Two active Wazuh agents and versions | Agent status does not prove event completeness |
-| `evidence/02-machine-a-security-alerts.png` | Indexed sudo/PAM events from Machine A | Alerts do not establish a complete causal chain |
-| `evidence/03-machine-b-security-alerts.png` | Indexed USB storage alert from Machine B | An alert is not independent verification of physical USB activity |
-| `evidence/04-wazuh-services-active.png` | Manager, indexer, dashboard, and agent listing | Service activity does not prove performance or resilience |
-
-**Publication rule:** Preserve original screenshots privately; review published images for inadvertent disclosures. Do not publish browser addresses, private network addresses, secrets, personal identifiers, or employer-specific telemetry. If a screenshot is redacted, describe the redaction without implying that it is an unaltered capture.
-
-**Evidence status:** Service and event observations verified from original captures; four sanitized screenshots published.
-
-## Visual evidence
-
-### Active agents
-
-![Wazuh endpoint overview showing two active Linux agents](evidence/01-wazuh-agents-active.png)
-
-### Machine A authentication alerts
-
-![Wazuh indexed authentication, sudo and PAM events from Machine A](evidence/02-machine-a-security-alerts.png)
-
-### Machine B USB alert
-
-![Wazuh indexed USB attachment alert from Machine B](evidence/03-machine-b-security-alerts.png)
-
-### Core service and agent health
-
-![Terminal showing active Wazuh services and agent manager listing](evidence/04-wazuh-services-active.png)
-
-Screenshots illustrate the observations above, not completeness of telemetry or provenance-based causal reconstruction.
+The original October 31 dashboard screenshots were reviewed during the validation session. They are not included in this independent public repository because the captures contain local infrastructure details and require a separate image-by-image review. The observations above are retained as the written record. Earlier copies of sanitized images in another repository should not be treated as published evidence here.
