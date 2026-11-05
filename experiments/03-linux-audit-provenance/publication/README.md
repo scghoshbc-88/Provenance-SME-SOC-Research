@@ -1,6 +1,6 @@
 # Experiment 03F — Public figure and reproducibility package
 
-**Branch:** `research-homelab`  
+**Repository:** Independent undergraduate research repository, `main` branch  
 **Experiment:** `SOCEXP03F-20261103-000558`  
 **Status:** Controlled execution and local graph validation completed; sanitized Python scripts, DOT source, and an accessible SVG figure published. The original PNG is retained locally and is not uploaded.
 
@@ -38,7 +38,7 @@ The linked files above have been committed to GitHub. The original `ausearch --r
 - A targeted text scan of the public DOT and generator found no matches for the specified username, host, private-address pattern, absolute home-path pattern, or known experiment PID/inode identifiers.
 - Audit rule cleanup was confirmed with `auditctl -l` returning `No rules`; a final `auditctl -s` check showed `lost 0`.
 
-The targeted identifier scan is **not** a comprehensive secrets audit. The actual publication artifacts must receive a final content review before upload.
+The targeted identifier scan is **not** a comprehensive secrets audit. The publication artifacts require continued review when reused or revised.
 
 ## Reproduction workflow
 
