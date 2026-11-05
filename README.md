@@ -38,7 +38,7 @@ My proposed study compares three approaches to investigating the same controlled
 
 The important methodological problem is to separate any benefit from **better analysis** from a benefit that comes simply from **collecting more events**. I have not yet run that comparison.
 
-[Research question and proposed study design](research/README.md) · [Illustrative SME environment](docs/00-sme-reference-architecture.md)
+[Original research concept (plain text)](research/concept-map.txt) · [Research question and proposed study design](research/README.md) · [Illustrative SME environment](docs/00-sme-reference-architecture.md)
 
 ## Scope of the published material
 
