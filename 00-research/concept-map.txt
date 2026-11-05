@@ -22,9 +22,9 @@ RQ2. Operational realism: How does normal SME user and administrative activity a
 
 RQ3. Telemetry completeness: How does missing event data affect detection and attack-path reconstruction across the three analysis configurations?
 
-RQ5. Analyst usefulness: Does provenance-assisted reconstruction reduce false-positive alerts, evidence reviewed and time needed to determine the sequence and root cause?
+RQ4. Analyst usefulness: Does provenance-assisted reconstruction reduce false-positive alerts, evidence reviewed and time needed to determine the sequence and root cause?
 
-RQ4. Telemetry volume and ingestion latency are reserved for Phase 2. AI-orchestrated attacks, adversarial mimicry, DDoS and insider threats are context rather than Phase 1 test scenarios.
+RQ5. Telemetry volume and ingestion latency are reserved for Phase 2. AI-orchestrated attacks, adversarial mimicry, DDoS and insider threats are context rather than Phase 1 test scenarios.
 
 3. Experimental environment and scenarios
 
