@@ -32,13 +32,13 @@ The proposed isolated cyber range contains a Kali Linux attacker VM, a Windows e
 
 The planned Phase 1 study uses two lab machines and a control workstation, separated from production infrastructure. The four proposed multi-stage scenarios are:
 
-1. Persistence: phishing-delivered payload and a scheduled-task backdoor.
+a. Persistence: phishing-delivered payload and a scheduled-task backdoor.
 
-2. Credential compromise: LSASS credential access followed by reuse of local administrator access on a second host.
+b. Credential compromise: LSASS credential access followed by reuse of local administrator access on a second host.
 
-3. Lateral movement: SMB or WinRM access to a second host using reused credentials.
+c. Lateral movement: SMB or WinRM access to a second host using reused credentials.
 
-4. Privilege escalation and data access: misconfigured service, sensitive-file staging and HTTPS exfiltration.
+d. Privilege escalation and data access: misconfigured service, sensitive-file staging and HTTPS exfiltration.
 
 Each scenario is intended to have a manually verified ground-truth timeline recording processes, files, network connections, hosts, credentials, timestamps and MITRE ATT&CK techniques. These are planned comparative scenarios, not completed experimental results.
 
