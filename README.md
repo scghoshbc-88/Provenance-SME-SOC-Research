@@ -6,6 +6,10 @@ I am investigating a practical question: **can relationships between processes, 
 
 The literature review and project proposal are still being revised. The experiments below are feasibility work, not a completed provenance-based intrusion detection system.
 
+**Research summary.** I am testing whether process and file relationships recovered from ordinary SOC telemetry can help reconstruct incidents in a small-organization setting. Controlled Linux Audit experiments have so far supported a limited process-creation and file-open chain, not an automated detector. The proposed next study compares alert-only investigation, runtime-event correlation, and provenance-assisted reconstruction using common ground truth and deliberately incomplete telemetry. The central unresolved question is whether any improvement comes from causal analysis rather than collecting additional events.
+
+[Research question](00-research/README.md) | [Concept map](00-research/concept-map.txt) | [Related work notes](00-research/related-work.md)
+
 ## Laboratory setup
 
 I use two Ubuntu machines and a Wazuh virtual machine. One Ubuntu host runs KVM/libvirt and hosts the Wazuh manager, indexer and dashboard (version 4.14.9). The second host is used for controlled Linux experiments with a Wazuh agent, Falco and Linux Audit.
@@ -44,4 +48,4 @@ The important methodological problem is to separate any benefit from **better an
 
 This is an independent home lab, not a record of a company deployment. I publish selected methods, scripts and diagrams; raw audit exports and screenshots containing local identifiers are not included. Some older experiment notes refer to evidence retained privately, so not every local screenshot is available here.
 
-I welcome technical criticism of the experimental design. Cheers!
+I welcome technical criticism of the experimental design.
