@@ -62,6 +62,8 @@ The four recorded audit events support two Python executions (including a PPID a
 
 The roadmap is a research plan, not a statement of completed functionality or a fixed doctoral proposal.
 
+**Evidence image status:** Previously published dashboard screenshots are intentionally withheld from this new repository pending manual privacy review. Some older experiment documents may refer to those withheld screenshots; the textual methods and available DOT/SVG figures remain accessible.
+
 ## Reproducibility and responsible publication
 
 - Publish scripts, configurations, methods, and sanitized visualizations only after review.
