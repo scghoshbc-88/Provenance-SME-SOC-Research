@@ -17,7 +17,9 @@ Date: November 4, 2026
 | 1415 | execve | Grandchild PID 12995 executed successfully |
 | 1419 | openat | PID 12995 opened controlled-data.txt in write mode |
 
-All six records refer to the November 4, 2026 execution window.
+All six records refer to the November 4, 2026 execution window (22:48:58–22:48:59, UTC−07:00), as documented in [the methodology](methodology.md). The serial numbers identify records within the locally retained audit exports, not a public raw dataset.
+
+The two `clone3` records support the parent-to-child edges because the successful return values identify the newly created process IDs. The three `execve` records support execution of the identified processes. The `openat` record and associated PATH evidence support a file-open edge only; they do not independently prove that bytes were written. This interpretation is illustrated in [the graph](figures/provenance-04b.svg).
 
 ## Reconstructed relationships
 
