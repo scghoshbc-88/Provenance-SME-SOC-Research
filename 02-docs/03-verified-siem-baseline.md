@@ -64,7 +64,7 @@ Dashboard verification: **Endpoints** for agent status; **Threat Hunting → Eve
 
 ## Subsequent work
 
-The controlled authentication and Falco experiments were subsequently documented in [Experiment 01](../experiments/01-controlled-authentication/README.md) and [Experiment 02](../experiments/02-falco-runtime/README.md). This section remains the dated October 31 baseline rather than a description of the latest lab state.
+The controlled authentication and Falco experiments were subsequently documented in [Experiment 01](../01-experiments/01-controlled-authentication/README.md) and [Experiment 02](../01-experiments/02-falco-runtime/README.md). This section remains the dated October 31 baseline rather than a description of the latest lab state.
 
 See [network architecture](01-network-architecture.md) and [SME reference architecture](00-sme-reference-architecture.md).
 

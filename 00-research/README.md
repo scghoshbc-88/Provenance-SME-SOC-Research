@@ -30,7 +30,7 @@ A challenge I need to resolve in the protocol is fairness: if configuration C re
 
 ## What the lab currently supports
 
-The [experiment notebook](../README.md#experiments-so-far) records Wazuh event collection, Falco integration, and two Linux Audit reconstruction tests. [Experiment 04](../experiments/04-process-file-provenance/results.md) captured two process-creation events, three executions and a write-mode file open in a controlled Python process chain.
+The [experiment notebook](../README.md#experiments-so-far) records Wazuh event collection, Falco integration, and two Linux Audit reconstruction tests. [Experiment 04](../01-experiments/04-process-file-provenance/results.md) captured two process-creation events, three executions and a write-mode file open in a controlled Python process chain.
 
 That establishes a limited reconstruction example. It does not show detection improvement, a completed attack reconstruction benchmark, or an automated PIDS.
 

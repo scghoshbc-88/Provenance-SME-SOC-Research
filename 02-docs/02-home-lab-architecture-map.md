@@ -42,6 +42,6 @@ flowchart TB
 | Comparison | Preliminary feasibility observations | Configurations A/B/C, common ground truth, 0/10/25% event loss |
 | Reproducibility | Experiment scripts, sanitized figures and methods | Frozen sensor configs, drop seeds, complete trial records and analyst-study protocol |
 
-See [implemented network architecture](01-network-architecture.md), [reference SME architecture](00-sme-reference-architecture.md), and [research rationale](../research/README.md).
+See [implemented network architecture](01-network-architecture.md), [reference SME architecture](00-sme-reference-architecture.md), and [research rationale](../00-research/README.md).
 
 **Security:** All topology descriptions intentionally omit addresses, credentials, employer infrastructure, and raw logs.
