@@ -1,6 +1,6 @@
 # Research question and proposed evaluation
 
-**Working project title:** Provenance-Based Intrusion Detection in SME Environments Using Real-Time SOC Telemetry
+**Working project title:** Application of Provenance-Based Intrusion Detection in SME Environments Using Real-Time SOC Telemetry
 
 This work is part of my ongoing undergraduate BTech Cybersecurity and Digital Forensics project at BCIT. 
 
