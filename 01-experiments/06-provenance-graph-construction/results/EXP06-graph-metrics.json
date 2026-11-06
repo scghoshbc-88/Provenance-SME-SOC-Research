@@ -1,0 +1,23 @@
+{
+  "experiment": "06",
+  "source_experiment": "05",
+  "run_id": "SOCEXP05-RUN02-20261106T040501Z",
+  "nodes": 3,
+  "edges": 2,
+  "directed_acyclic": true,
+  "verified_audit_edges": [
+    {
+      "parent_pid": 22254,
+      "child_pid": 22257,
+      "syscall": "clone3",
+      "audit_records": 1
+    },
+    {
+      "parent_pid": 22257,
+      "child_pid": 22258,
+      "syscall": "vfork",
+      "audit_records": 1
+    }
+  ],
+  "scope": "single controlled process chain"
+}

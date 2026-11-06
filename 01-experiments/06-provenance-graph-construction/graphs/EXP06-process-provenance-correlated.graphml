@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d5" for="edge" attr.name="falco_evidence_type" attr.type="string" />
+  <key id="d4" for="edge" attr.name="falco_correlated" attr.type="boolean" />
+  <key id="d3" for="edge" attr.name="verified" attr.type="boolean" />
+  <key id="d2" for="edge" attr.name="source" attr.type="string" />
+  <key id="d1" for="edge" attr.name="syscall" attr.type="string" />
+  <key id="d0" for="node" attr.name="process" attr.type="string" />
+  <graph edgedefault="directed">
+    <node id="22254">
+      <data key="d0">python3</data>
+    </node>
+    <node id="22257">
+      <data key="d0">sh</data>
+    </node>
+    <node id="22258">
+      <data key="d0">id</data>
+    </node>
+    <edge source="22254" target="22257">
+      <data key="d1">clone3</data>
+      <data key="d2">Linux Audit</data>
+      <data key="d3">True</data>
+      <data key="d4">False</data>
+    </edge>
+    <edge source="22257" target="22258">
+      <data key="d1">vfork</data>
+      <data key="d2">Linux Audit</data>
+      <data key="d3">True</data>
+      <data key="d4">True</data>
+      <data key="d5">execution_parent_pid</data>
+    </edge>
+  </graph>
+</graphml>

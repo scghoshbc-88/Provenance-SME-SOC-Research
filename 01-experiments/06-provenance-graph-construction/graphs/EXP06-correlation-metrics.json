@@ -1,0 +1,21 @@
+{
+  "experiment": "06",
+  "source_experiment": "05",
+  "run_id": "SOCEXP05-RUN02-20261106T040501Z",
+  "scope": "single controlled process chain",
+  "nodes": 3,
+  "expected_edges": 2,
+  "reconstructed_edges": 2,
+  "audit_verified_edges": 2,
+  "falco_correlated_edges": 1,
+  "edge_completeness": 1.0,
+  "falco_corroboration_fraction": 0.5,
+  "directed_acyclic": true,
+  "wazuh_same_execution_verified": false,
+  "limitations": [
+    "One controlled process chain",
+    "Falco corroboration uses execution parent PID",
+    "No independent attack detection evaluation",
+    "No live telemetry-loss experiment"
+  ]
+}
