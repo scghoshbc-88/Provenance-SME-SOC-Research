@@ -25,8 +25,15 @@ I use two Ubuntu machines and a Wazuh virtual machine. One Ubuntu host runs KVM/
 | [02B — Falco/Wazuh](01-experiments/02b-falco-wazuh-ingestion/README.md) | Can the Falco event be ingested and alerted on by Wazuh? | Integration test |
 | [03 — Linux Audit](01-experiments/03-linux-audit-provenance/README.md) | What process and file relationships can I reconstruct from selected audit records? | Partial reconstruction |
 | [04 — Process chain](01-experiments/04-process-file-provenance/README.md) | Can I capture process creation as well as execution and file access? | Parent–child–grandchild chain |
+| [05 — Cross-sensor process provenance](01-experiments/05-process-chain-provenance/README.md) | Can Audit and Falco corroborate a process chain, and how sensitive is reconstruction to synthetic telemetry loss? | Two-edge baseline and simulation |
 
-### Most recent experiment: 04 (4 November 2026)
+### Most recent experiment: 05 (5 November 2026)
+
+A controlled `python3 → sh → id` execution produced two parent-child edges verified by Linux Audit; Falco independently corroborated the `sh → id` edge. A separate Wazuh alert verified ingestion for another execution, not this baseline. A synthetic telemetry-loss analysis (1,000 iterations per condition) reported complete-chain rates of 100%, 90.2% and 70.5% under nominal 0%, 10% and 25% loss. These are simulation outputs from a single two-edge graph, not measured field reliability.
+
+[Experiment 05 record](01-experiments/05-process-chain-provenance/README.md)
+
+### Previous experiment: 04 (4 November 2026)
 
 A controlled Python parent created a child, which created a grandchild. The grandchild opened a test file in write mode. Six selected audit events (serials 1406, 1408, 1409, 1414, 1415 and 1419) support the reconstruction.
 
@@ -40,7 +47,7 @@ The `clone3` records make this stronger than my earlier Experiment 03F, where th
 
 My proposed study compares three approaches to investigating the same controlled attack scenarios: (A) conventional SIEM analysis, (B) SIEM with runtime-event correlation, and (C) provenance-assisted reconstruction. I plan to repeat comparisons with complete telemetry and controlled loss of approximately 10% and 25% of events.
 
-The important methodological problem is to separate any benefit from **better analysis** from a benefit that comes simply from **collecting more events**. I have not yet run that comparison.
+The important methodological problem is to separate any benefit from **better analysis** from a benefit that comes simply from **collecting more events**. I have not yet run that full comparison; Experiment 05 is a limited process-edge reconstruction and synthetic-loss feasibility test.
 
 [Original research concept (plain text)](00-research/concept-map.txt) · [Research question and proposed study design](00-research/README.md) · [Illustrative SME environment](02-docs/00-sme-reference-architecture.md)
 
